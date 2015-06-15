@@ -310,7 +310,7 @@ function Inliner(url, options, callback) {
       });
 
       } catch (e) {
-        inliner.emit('error', "Fatal error parsing HTML - exiting:\n" + e);
+        inliner.emit('error', "Fatal error parsing HTML - exiting:\n" + e.stack);
         callback && callback(null);
       }
     }
