@@ -1,6 +1,6 @@
 var URL = require('url'),
     util = require('util'),
-    jsmin = require('./jsmin'),
+    //jsmin = require('./jsmin'),
     events = require('events'),
     Buffer = require('buffer').Buffer,
     fs = require('fs'),
@@ -310,8 +310,8 @@ function Inliner(url, options, callback) {
       });
 
       } catch (e) {
-        inliner.emit('error', 'Fatal error parsing HTML - exiting');
-        process.exit(1);
+        inliner.emit('error', "Fatal error parsing HTML - exiting:\n" + e);
+        callback && callback(null);
       }
     }
   });
