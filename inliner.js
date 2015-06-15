@@ -83,7 +83,7 @@ function Inliner(url, options, callback) {
       try { 
 
       jsdom.env(html, [
-        'http://code.jquery.com/jquery.min.js'
+        './jquery.min.js'
       ], {
         url: url
       }, function(errors, window) {
@@ -385,7 +385,8 @@ Inliner.prototype.get = function (url, options, callback) {
           compress = require('./node-compress/lib/compress/');
         } catch (e) {
           console.error(url + ' sent gzipped header\nFailed to load node-compress - see http://github.com/remy/inliner for install directions. \nexiting');
-          process.exit();
+          callback && callback('');
+          return;
         }
       }
       gunzip = new compress.GunzipStream();
